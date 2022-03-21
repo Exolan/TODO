@@ -44,11 +44,20 @@
     li.className = 'collection-item'
     li.id='id'
     li.style="list-style-type: none"
-    li.textContent=input.value
+    
+
+    const div = document.createElement("div")
+    div.className="divElements"
+    li.append(div)
+    
+    const p = document.createElement('p')
+    p.className="text"
+    p.textContent=input.value
+    div.append(p)
 
     const buttons = document.createElement('div')
     buttons.className='buttons'
-    li.append(buttons)
+    div.append(buttons)
 
     let buttonDone=document.createElement('button')
     buttonDone.type='button'
