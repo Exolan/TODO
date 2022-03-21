@@ -24,6 +24,7 @@
     buttonAdd.id='buttonAdd'
     buttonAdd.innerText='Добавить дело'
     buttonAdd.type='button'
+    buttonAdd.style.backgroundColor="rgb(120,219,226)"
     buttonAdd.addEventListener('click', createTodoItem)
     form.append(buttonAdd)
   }
@@ -64,14 +65,25 @@
     buttonDone.className='class="waves-effect waves-light btn-small'
     buttonDone.id='buttonDone'
     buttonDone.textContent='Выполнено'
+    buttonDone.style.backgroundColor="rgb(120,219,226)"
     buttonDone.addEventListener('click',()=>{
-      li.style.backgroundColor = 'green'
+      if(buttonDone.textContent=="Выполнено"){
+        buttonDone.style.backgroundColor="rgb(66,133,180)"
+        buttonDone.textContent='Отмена'
+        li.style.backgroundColor = 'rgb(68,148,74)'
+      }
+      else if(buttonDone.textContent=='Отмена'){
+        li.style.backgroundColor = ''
+        buttonDone.style.backgroundColor="rgb(120,219,226)"
+        buttonDone.textContent='Выполнено'
+      }
     })
     buttons.append(buttonDone)
 
     let buttonDelet=document.createElement('button')
     buttonDelet.type='button'
     buttonDelet.className='class="waves-effect waves-light btn-small'
+    buttonDelet.style.backgroundColor="rgb(238,32,77)"
     buttonDelet.id='buttonDelet'
     buttonDelet.textContent='Удалить'
     buttonDelet.addEventListener('click', ()=>{
