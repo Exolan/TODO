@@ -2,8 +2,8 @@
   document.addEventListener('DOMContentLoaded',()=>{
     const main = document.querySelector('.main')
 
-    main.append(createAppList(main))
-    main.append(createTodoItemForm(main))
+    main.append(createAppList())
+    main.append(createTodoItemForm())
     main.append(createTodoList())
   })
   
@@ -56,7 +56,6 @@
       li.id='id'
       li.style="list-style-type: none"
     
-
       const div = document.createElement("div")
       div.className="divElements"
       li.append(div)
