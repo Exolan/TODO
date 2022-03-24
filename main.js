@@ -1,96 +1,105 @@
-(function(){
-  const main = document.querySelector('.main')
-  function createAppList(){
-    const name = document.createElement('h1')
-    name.textContent = "Список дел"
-    name.className = "name"
-    name.id = "name"
-    main.append(name)
+(function () {
+  function createAppList(name) {
+    const h = document.createElement("h1");
+    h.textContent = name;
+    h.className = "name";
+    h.id = "name";
+    return h;
   }
-  createAppList()
 
   function createTodoItemForm() {
-    const form = document.createElement('form')
-    form.className="form"
-    main.append(form)
+    const form = document.createElement("form");
+    form.className = "form";
 
-    const input = document.createElement('input')
-    input.className='input'
-    input.id='input'
-    form.append(input)
+    const input = document.createElement("input");
+    input.className = "input";
+    input.id = "input";
+    form.append(input);
 
-    const buttonAdd=document.createElement('button')
-    buttonAdd.className='class="waves-effect waves-light btn-small'
-    buttonAdd.id='buttonAdd'
-    buttonAdd.innerText='Добавить дело'
-    buttonAdd.type='button'
-    buttonAdd.style.backgroundColor="rgb(120,219,226)"
-    buttonAdd.addEventListener('click', createTodoItem)
-    form.append(buttonAdd)
+    const buttonAdd = document.createElement("button");
+    buttonAdd.className = 'class="waves-effect waves-light btn-small';
+    buttonAdd.id = "buttonAdd";
+    buttonAdd.innerText = "Добавить дело";
+    buttonAdd.style.backgroundColor = "rgb(120,219,226)";
+    form.addEventListener("submit", createTodoItem);
+    form.append(buttonAdd);
+    return form;
   }
-  createTodoItemForm()
 
   function createTodoList() {
-    const ul = document.createElement('ul')
-    ul.className='ul'
-    ul.id='ul'
-    main.append(ul)
+    const ul = document.createElement("ul");
+    ul.className = "ul";
+    ul.id = "ul";
+    return ul;
   }
-  createTodoList()
 
-  function createTodoItem(){
-    const ul = document.getElementById('ul')
-    const input = document.getElementById('input')
-    const li = document.createElement('li')
-    li.className = 'collection-item'
-    li.id='id'
-    li.style="list-style-type: none"
-    
+  function createTodoItem(e) {
+    e.preventDefault();
+    if (input.value != "") {
+      const ul = document.getElementById("ul");
+      const input = document.getElementById("input");
+      const li = document.createElement("li");
+      li.className = "collection-item";
+      li.id = "id";
+      li.style = "list-style-type: none";
 
-    const div = document.createElement("div")
-    div.className="divElements"
-    li.append(div)
-    
-    const p = document.createElement('p')
-    p.className="text"
-    p.textContent=input.value
-    div.append(p)
+      const div = document.createElement("div");
+      div.className = "divElements";
+      li.append(div);
 
-    const buttons = document.createElement('div')
-    buttons.className='buttons'
-    div.append(buttons)
+      const p = document.createElement("p");
+      p.className = "text";
+      p.textContent = input.value;
+      div.append(p);
 
-    let buttonDone=document.createElement('button')
-    buttonDone.type='button'
-    buttonDone.className='class="waves-effect waves-light btn-small'
-    buttonDone.id='buttonDone'
-    buttonDone.textContent='Выполнено'
-    buttonDone.style.backgroundColor="rgb(120,219,226)"
-    buttonDone.addEventListener('click',()=>{
-      if(buttonDone.textContent=="Выполнено"){
-        buttonDone.style.backgroundColor="rgb(66,133,180)"
-        buttonDone.textContent='Отмена'
-        li.style.backgroundColor = 'rgb(68,148,74)'
-      }
-      else if(buttonDone.textContent=='Отмена'){
-        li.style.backgroundColor = ''
-        buttonDone.style.backgroundColor="rgb(120,219,226)"
-        buttonDone.textContent='Выполнено'
-      }
-    })
-    buttons.append(buttonDone)
+      const buttons = document.createElement("div");
+      buttons.className = "buttons";
+      div.append(buttons);
 
-    let buttonDelet=document.createElement('button')
-    buttonDelet.type='button'
-    buttonDelet.className='class="waves-effect waves-light btn-small'
-    buttonDelet.style.backgroundColor="rgb(238,32,77)"
-    buttonDelet.id='buttonDelet'
-    buttonDelet.textContent='Удалить'
-    buttonDelet.addEventListener('click', ()=>{
-      li.remove(EventTarget)
-    })
-    buttons.append(buttonDelet)
+      let buttonDone = document.createElement("button");
+      buttonDone.type = "button";
+      buttonDone.className = 'class="waves-effect waves-light btn-small';
+      buttonDone.id = "buttonDone";
+      buttonDone.textContent = "Выполнено";
+      buttonDone.style.backgroundColor = "rgb(120,219,226)";
+      buttonDone.addEventListener("click", () => {
+        if (buttonDone.textContent == "Выполнено") {
+          buttonDone.style.backgroundColor = "rgb(66,133,180)";
+          buttonDone.textContent = "Отмена";
+          li.style.backgroundColor = "rgb(68,148,74)";
+        } else if (buttonDone.textContent == "Отмена") {
+          li.style.backgroundColor = "";
+          buttonDone.style.backgroundColor = "rgb(120,219,226)";
+          buttonDone.textContent = "Выполнено";
+        }
+      });
+      buttons.append(buttonDone);
 
-    ul.append(li)
+      let buttonDelet = document.createElement("button");
+      buttonDelet.type = "button";
+      buttonDelet.className = "class=waves-effect waves-light btn-small";
+      buttonDelet.style.backgroundColor = "rgb(238,32,77)";
+      buttonDelet.id = "buttonDelet";
+      buttonDelet.textContent = "Удалить";
+      buttonDelet.addEventListener("click", () => {
+        if (confirm("Вы точно хотите удалить запись?")) {
+          li.remove(EventTarget);
+        }
+      });
+      buttons.append(buttonDelet);
+      input.value = "";
+      ul.append(li);
+    } else {
+      alert("Строка не может быть пустой!");
+    }
+    return ul;
   }
-})()
+
+  function myFunction(name) {
+    const main = document.querySelector(".main");
+    main.append(createAppList(name));
+    main.append(createTodoItemForm());
+    main.append(createTodoList());
+  }
+  window.myFunction = myFunction;
+})();

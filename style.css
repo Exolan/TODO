@@ -1,6 +1,7 @@
 .main {
   margin-top: 20px;
   text-align: center;
+  display: block;
 }
 #name {
   display: inline;
@@ -18,7 +19,7 @@
   font-size: 30px;
 }
 
-#ul {
+.ul {
   display: inline-block;
   width: 800px;
   margin: 10px;
@@ -29,7 +30,7 @@
   justify-content: center;
   align-items: center;
 }
-li {
+.collection-item {
   text-align: center;
   margin-top: 10px;
   display: inline-block;
@@ -37,7 +38,7 @@ li {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 20px;
 }
-li .divElements {
+.collection-item .divElements {
   width: 80%;
   display: flex;
   justify-content: center;
@@ -50,7 +51,7 @@ li .divElements {
   margin-right: 0px;
 }
 
-li .text {
+.collection-item .text {
   padding-right: 15px;
   text-align: left;
 }
