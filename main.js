@@ -41,7 +41,7 @@
     return ul
   }
 
-  function CreateLi(name=null, array=null,index=null){
+  function CreateLi(name, array=null,index=null){
     let li = document.createElement('li')
     let a = document.createElement('a')
     let buttons = document.createElement('div')
@@ -93,9 +93,6 @@
         LocalTry(name, array)
       })
     }
-    
-
-
       else{
         a.textContent = index.name
         if (index.done == true){
@@ -154,7 +151,26 @@
   }
 
   function LocalTry(name, array){
-    localStorage.removeItem(name)
+    // localStorage.removeItem(name)
+    // array = []
+    // let liArray = document.querySelectorAll('.li_todo')
+    // let a = document.querySelectorAll('.a')
+    // let status = false
+    // let schetchik = 0
+    // for (let i of liArray){
+    //   if (i.style.backgroundColor == "rgb(68,148,74)"){
+    //     status = true
+    //   }
+    //   else if (i.style.backgroundColor == ""){
+    //     status = false
+    //   }
+    //   array.push({name: a[schetchik].textContent, done: status})
+    //   schetchik++
+    // }
+    // console.log(array)
+    // localStorage.setItem(name, JSON.stringify(array))
+
+    
     array = []
     let liArray = document.querySelectorAll('.li_todo')
     let a = document.querySelectorAll('.a')
@@ -170,10 +186,7 @@
       array.push({name: a[schetchik].textContent, done: status})
       schetchik++
     }
-    console.log(array)
-    localStorage.removeItem(name)
     localStorage.setItem(name, JSON.stringify(array))
-    
   }
 
   function CreateToDo(heading_text, name, array=null){
@@ -188,7 +201,6 @@
     div_IB.append(buttonAdd)
     form.append(div_IB)
     conteiner.append(CreateUl())
-    localStorage.setItem(name, JSON.stringify(array)||[])
     LocalArray(name, array)
 
     setInterval(()=>{
@@ -206,14 +218,5 @@
       LocalTry(name, array)
     })
   }
-
-
-
-  arrayWork = [
-    {name: 'Помыть машину', done: true},
-    {name: 'Покормить Лешу', done: false},
-  ]
-  window.arrayWork = arrayWork
-  
   window.myFunction = CreateToDo
 })();
