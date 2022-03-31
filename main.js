@@ -41,7 +41,7 @@
     return ul
   }
 
-  function CreateLi(name, array=null,index=null){
+  function CreateLi(name=null, array=null,index=null){
     let li = document.createElement('li')
     let a = document.createElement('a')
     let buttons = document.createElement('div')
@@ -89,8 +89,9 @@
       e.preventDefault()
       if (confirm("Вы точно хотите удалить запись?")) {
         li.remove(EventTarget);
-        }
         LocalTry(name, array)
+        }
+        
       })
     }
       else{
@@ -125,8 +126,9 @@
         e.preventDefault()
         if (confirm("Вы точно хотите удалить запись?")) {
           li.remove(EventTarget);
+          LocalTry(name, array)
         }
-        LocalTry(name, array)
+        
         });
       }
       buttonDone.className = 'buttonDone waves-effect waves-light btn'
@@ -201,6 +203,8 @@
     div_IB.append(buttonAdd)
     form.append(div_IB)
     conteiner.append(CreateUl())
+    console.log(localStorage.getItem(name))
+    const arrayObj = localStorage.getItem(name)
     LocalArray(name, array)
 
     setInterval(()=>{
@@ -214,7 +218,7 @@
 
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
-      CreateLi()
+      CreateLi(name)
       LocalTry(name, array)
     })
   }
