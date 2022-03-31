@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <body>
-    <header>
-      <nav>
-        <ul class="pages">
-          <li><a href="/index.html">Мои дела</a></li>
-          <li><a href="/papa.html">Папины дела</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="main"></div>
-    <script src="main.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", myFunction("Мамины дела"));
-    </script>
-  </body>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <ul class="header_ul">
+        <li><a href="/index.html">Мой список дел</a></li>
+        <li><a href="/papa.html">Список дел папы</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="conteiner"></div>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', myFunction('Список дел мамы'))
+  </script>
+
+</body>
+
 </html>

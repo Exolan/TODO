@@ -1,24 +1,30 @@
-.main {
+.conteiner {
   margin-top: 20px;
   text-align: center;
   display: block;
 }
-#name {
+.h1 {
   display: inline;
   width: 200px;
   height: 50px;
 }
-
 .form {
   margin-top: 20px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#input {
-  width: 50%;
-  height: 30%;
+.div_IB {
+  display: flex;
+  width: 1000px;
+  overflow: unset;
+}
+.input {
+  width: 300px;
+  display: flex;
   font-size: 30px;
 }
-
 .ul {
   display: inline-block;
   width: 800px;
@@ -46,12 +52,15 @@
   margin: 0 auto;
   flex-wrap: wrap;
 }
-.buttons {
+.buttons_todo {
   margin-left: auto;
   margin-right: 0px;
 }
-
 .collection-item .text {
   padding-right: 15px;
   text-align: left;
+}
+.a {
+  font-size: 40px;
+  color: black;
 }
