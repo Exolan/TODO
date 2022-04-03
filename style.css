@@ -1,66 +1,150 @@
-.conteiner {
-  margin-top: 20px;
-  text-align: center;
-  display: block;
+body {
+  margin: 0;
+  background: rgb(125, 125, 255);
 }
-.h1 {
-  display: inline;
-  width: 200px;
-  height: 50px;
-}
-.form {
-  margin-top: 20px;
-  width: 100%;
+
+.header {
   display: flex;
+  width: 100%;
+  height: 80px;
+  background-color: darkslateblue;
+  border-bottom: 2px solid black;
+}
+.nav_header {
+  display: flex;
+  width: 100%;
+}
+.ul_header {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+}
+.li_header {
+  list-style-type: none;
+}
+.li_header:hover,
+.li_header:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+.a_header {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(131, 255, 255);
+  font-family: "Press Start 2P", cursive;
+  -webkit-text-stroke: 1.5px black;
+}
+
+.conteiner {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.heading {
+  display: flex;
+  width: 100%;
+  height: 80px;
   justify-content: center;
   align-items: center;
+  font-size: 60px;
+  font-family: "Press Start 2P", cursive;
+  color: rgb(255, 136, 0);
+  -webkit-text-stroke: 1.5px black;
 }
-.div_IB {
+
+.form {
   display: flex;
-  width: 1000px;
-  overflow: unset;
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .input {
-  width: 300px;
-  display: flex;
-  font-size: 30px;
-}
-.ul {
-  display: inline-block;
-  width: 800px;
-  margin: 10px;
+  width: 70%;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 40px;
   font-size: 20px;
-  overflow: hidden;
-  margin: 40px;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
+  font-family: "Press Start 2P", cursive;
+  padding-left: 10px;
 }
-.collection-item {
-  text-align: center;
-  margin-top: 10px;
-  display: inline-block;
-  width: 100%;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 20px;
+.input:hover,
+.input:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
 }
-.collection-item .divElements {
+
+.buttonAdd {
+  background-color: #ffb273;
+  width: 150px;
+  height: 35px;
+  border: 2px solid black;
+  border-radius: 40px;
+  font-size: 15px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.buttonAdd:hover,
+.buttonAdd:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+.ul_todo {
+  display: grid;
+  height: 100%;
   width: 80%;
-  display: flex;
   justify-content: center;
+}
+
+.li_todo {
+  display: flex;
+  list-style-type: none;
   align-items: center;
-  margin: 0 auto;
-  flex-wrap: wrap;
+  height: 50px;
+  width: 750px;
+  border: 2px solid black;
+  border-radius: 40px;
+  margin: 5px 0;
 }
-.buttons_todo {
+
+.li_todo:hover,
+.li_todo:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+.text_li {
+  padding-left: 10px;
+  font-size: 15px;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  width: 430px;
+  overflow: hidden;
+}
+.buttons_li {
   margin-left: auto;
-  margin-right: 0px;
+  margin-right: 10px;
 }
-.collection-item .text {
-  padding-right: 15px;
-  text-align: left;
+.buttonDone_li {
+  background-color: #5ccccc;
+  width: 150px;
+  height: 35px;
+  border: 2px solid black;
+  border-radius: 40px;
+  font-size: 15px;
+  font-family: "Press Start 2P", cursive;
 }
-.a {
-  font-size: 40px;
-  color: black;
+.buttonDelet_li {
+  background-color: #ff7373;
+  width: 150px;
+  height: 35px;
+  border: 2px solid black;
+  border-radius: 40px;
+  font-size: 15px;
+  font-family: "Press Start 2P", cursive;
 }
