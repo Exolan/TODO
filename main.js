@@ -42,6 +42,7 @@
     const input = document.querySelector(".input");
 
     li.className = "li_todo";
+    li.style.backgroundColor = "#6C8CD5";
     p.className = "text_li";
     buttons.className = "buttons_li";
     buttonDone.className = "buttonDone_li";
