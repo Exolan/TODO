@@ -13,6 +13,12 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="main.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        functionToDo("Мамины дела", "MomWork");
+      });
+    </script>
   </head>
   <body>
     <header class="header">
@@ -28,13 +34,5 @@
       </nav>
     </header>
     <div class="conteiner"></div>
-
-    <script src="main1.js"></script>
-    <script>
-      document.addEventListener(
-        "DOMContentLoaded",
-        functionToDo("Мамины дела", "MomWork")
-      );
-    </script>
   </body>
 </html>
