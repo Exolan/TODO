@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,13 +14,12 @@
       rel="stylesheet"
     />
   </head>
-  <script type="module" src="main1.js" defer></script>
   <body>
     <header class="header">
       <nav class="nav_header">
         <ul class="ul_header">
           <li class="li_header">
-            <a class="a_header" href="mom.html">Мамины дела</a>
+            <a class="a_header" href="index.html">Мои дела</a>
           </li>
           <li class="li_header">
             <a class="a_header" href="pa.html">Папины дела</a>
@@ -29,5 +28,13 @@
       </nav>
     </header>
     <div class="conteiner"></div>
+
+    <script src="main1.js"></script>
+    <script>
+      document.addEventListener(
+        "DOMContentLoaded",
+        functionToDo("Мамины дела", "MomWork")
+      );
+    </script>
   </body>
 </html>

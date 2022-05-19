@@ -1,226 +1,194 @@
-(function(){
-  // Функция создания хэдера
-  function CreateAppList(heading_text){
-    let heading = document.createElement('h1')
-    heading.className = "h1"
-    heading.textContent = heading_text
-    return heading
+(function () {
+  window.functionToDo = ToDo;
+
+  let arrayObj;
+
+  function CreateHeading(heading_text) {
+    const heading = document.createElement("h1");
+    heading.className = "heading";
+    heading.textContent = heading_text;
+    return heading;
   }
 
-  // Функция создания формы и ее элементов
-  function CreateToDoItemForm(){
-    let form = document.createElement('form')
-    let input = document.createElement('input')
-    let buttonAdd = document.createElement('button')
-    const div_IB = document.createElement('div')
+  function CreateForm() {
+    const form = document.createElement("form");
+    const input = document.createElement("input");
+    const buttonAdd = document.createElement("button");
 
-    form.className = 'form'
+    form.className = "form";
+    input.className = "input";
+    buttonAdd.className = "buttonAdd";
 
-    input.className = 'input'
-    input.placeholder = 'Введите название записи'
-    
+    input.placeholder = "Введите дело";
+    buttonAdd.textContent = "Добавить";
+    buttonAdd.setAttribute("disabled", "disabled");
 
-    buttonAdd.className = 'buttonAdd waves-effect waves-light btn'
-    buttonAdd.textContent = 'Добавить'
-    buttonAdd.disabled = true
-
-    div_IB.className = "div_IB"
-
-    
-    return {
-      form,
-      div_IB,
-      input,
-      buttonAdd
-    }
+    return { form, input, buttonAdd };
   }
 
-  function CreateUl(){
-    const ul = document.createElement('ul')
-    ul.className = "ul"
-    return ul
+  function CreateUl() {
+    const ul = document.createElement("ul");
+    ul.className = "ul_todo";
+    return ul;
   }
 
-  function CreateLi(name=null, array=null,index=null){
-    let li = document.createElement('li')
-    let a = document.createElement('a')
-    let buttons = document.createElement('div')
-    let buttonDone = document.createElement('button')
-    let buttonDelet = document.createElement('button')
-    const ul = document.querySelector('.ul')
-    const input = document.querySelector('.input')
-    li.className = 'li_todo collection-item'
-    li.style = ''
+  function CreateLi(name) {
+    const ul = document.querySelector(".ul_todo");
+    const li = document.createElement("li");
+    const p = document.createElement("p");
+    const buttons = document.createElement("div");
+    const buttonDone = document.createElement("button");
+    const buttonDelet = document.createElement("button");
+    const input = document.querySelector(".input");
 
-    const div = document.createElement("div");
-    div.className = "divElements";
-    li.append(div);
-    let color
-    let text
+    li.className = "li_todo";
+    li.style.backgroundColor = "#6C8CD5";
+    p.className = "text_li";
+    buttons.className = "buttons_li";
+    buttonDone.className = "buttonDone_li";
+    buttonDelet.className = "buttonDelet_li";
 
-    a.className = "a"
-    div.append(a)
+    p.textContent = input.value;
+    buttonDone.textContent = "Отметить";
+    buttonDelet.textContent = "Удалить";
 
-    buttons.className = "buttons_todo"
-    div.append(buttons)
+    arrayObj.push({ name: input.value, done: false });
+    localStorage.setItem(name, JSON.stringify(arrayObj));
+    let index = arrayObj.length - 1;
 
+    buttons.append(buttonDone);
+    buttons.append(buttonDelet);
+    li.append(p);
+    li.append(buttons);
 
-    if (index == null){
-      a.textContent = input.value
-      buttonDone.style.backgroundColor = "rgb(120,219,226)";
-      buttonDone.addEventListener("click", (e) => {
-        e.preventDefault()
-        if (buttonDone.textContent == "Отметить") {
-          buttonDone.style.backgroundColor = "rgb(66,133,180)";
-          buttonDone.textContent = "Отмена";
-          li.style.backgroundColor = "rgb(68,148,74)";
-          LocalTry(name, array)
-        } 
-        else if (buttonDone.textContent == "Отмена") {
-          li.style.backgroundColor = "";
-          buttonDone.style.backgroundColor = "rgb(120,219,226)";
-          buttonDone.textContent = "Отметить";
-          LocalTry(name, array)
-        }
-      })
-
-      buttonDelet.style.backgroundColor = "rgb(238,32,77)";
-      buttonDelet.addEventListener("click", (e) => {
-      e.preventDefault()
-      if (confirm("Вы точно хотите удалить запись?")) {
-        li.remove(EventTarget);
-        LocalTry(name, array)
-        }
-        
-      })
-    }
-      else{
-        a.textContent = index.name
-        if (index.done == true){
-          li.style.backgroundColor = "rgb(68,148,74)"
-          buttonDone.textContent = "Отмена"
-        }
-        else{
-          li.style.backgroundColor = ""
-          buttonDone.textContent = "Отметить"
-        }
-        li.style.backgroundColor = color
-        buttonDone.textContent = text
-        buttonDone.style.backgroundColor = "rgb(120,219,226)";
-        buttonDone.addEventListener("click", (e) => {
-        e.preventDefault()
-        if (buttonDone.textContent == "Отметить") {
-          buttonDone.style.backgroundColor = "rgb(66,133,180)";
-          buttonDone.textContent = "Отмена";
-          li.style.backgroundColor = "rgb(68,148,74)";
-          LocalTry(name, array)
-        } else if (buttonDone.textContent == "Отмена") {
-          li.style.backgroundColor = "";
-          buttonDone.style.backgroundColor = "rgb(120,219,226)";
-          buttonDone.textContent = "Отметить";
-          LocalTry(name, array)
-        }
-        })
-        buttonDelet.style.backgroundColor = "rgb(238,32,77)";
-        buttonDelet.addEventListener("click", (e) => {
-        e.preventDefault()
-        if (confirm("Вы точно хотите удалить запись?")) {
-          li.remove(EventTarget);
-          LocalTry(name, array)
-        }
-        
-        });
-      }
-      buttonDone.className = 'buttonDone waves-effect waves-light btn'
-      buttonDone.textContent = 'Отметить'
-      buttons.append(buttonDone)
-      
-      buttonDelet.className = 'buttonDelet waves-effect waves-light btn'
-      buttonDelet.textContent = 'Удалить'
-      
-      input.value = "";
-      buttons.append(buttonDelet)
-      ul.append(li)
-      return ul
-  }
-
-  function LocalArray(name, array){
-    if (array != null){
-      for (const index of array){
-        CreateLi(name, array, index)
-      }
-    }
-  }
-
-  function LocalTry(name, array){
-    // localStorage.removeItem(name)
-    // array = []
-    // let liArray = document.querySelectorAll('.li_todo')
-    // let a = document.querySelectorAll('.a')
-    // let status = false
-    // let schetchik = 0
-    // for (let i of liArray){
-    //   if (i.style.backgroundColor == "rgb(68,148,74)"){
-    //     status = true
-    //   }
-    //   else if (i.style.backgroundColor == ""){
-    //     status = false
-    //   }
-    //   array.push({name: a[schetchik].textContent, done: status})
-    //   schetchik++
-    // }
-    // console.log(array)
-    // localStorage.setItem(name, JSON.stringify(array))
-
-    
-    array = []
-    let liArray = document.querySelectorAll('.li_todo')
-    let a = document.querySelectorAll('.a')
-    let status = false
-    let schetchik = 0
-    for (let i of liArray){
-      if (i.style.backgroundColor == "rgb(68,148,74)"){
-        status = true
-      }
-      else if (i.style.backgroundColor == ""){
-        status = false
-      }
-      array.push({name: a[schetchik].textContent, done: status})
-      schetchik++
-    }
-    localStorage.setItem(name, JSON.stringify(array))
-  }
-
-  function CreateToDo(heading_text, name, array=null){
-    let conteiner = document.querySelector('.conteiner')
-    const form = CreateToDoItemForm().form
-    const buttonAdd = CreateToDoItemForm().buttonAdd
-    const input = CreateToDoItemForm().input
-    const div_IB = CreateToDoItemForm().div_IB
-    conteiner.append(CreateAppList(heading_text))
-    conteiner.append(form)
-    div_IB.append(input)
-    div_IB.append(buttonAdd)
-    form.append(div_IB)
-    conteiner.append(CreateUl())
-    console.log(localStorage.getItem(name))
-    const arrayObj = localStorage.getItem(name)
-    LocalArray(name, array)
-
-    setInterval(()=>{
-      if (input.value != '' ){
-        buttonAdd.removeAttribute("disabled")
-      }
-      else{
-        buttonAdd.setAttribute("disabled", "disabled")
-      }
-    })
-
-    form.addEventListener('submit', (e)=>{
+    buttonDone.addEventListener("click", (e) => {
       e.preventDefault();
-      CreateLi(name)
-      LocalTry(name, array)
-    })
+      if (buttonDone.textContent == "Отметить") {
+        buttonDone.textContent = "Отмена";
+        li.style.backgroundColor = "#67E667";
+        arrayObj[index].done = true;
+      } else if (buttonDone.textContent == "Отмена") {
+        buttonDone.textContent = "Отметить";
+        li.style.backgroundColor = "#6C8CD5";
+        arrayObj[index].done = false;
+      }
+      RewriteLocalAarray(name);
+      input.value = "";
+    });
+
+    buttonDelet.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (confirm("Вы точно хотите удалить дело?")) {
+        li.remove(EventTarget);
+        RewriteLocalAarray(name);
+      }
+    });
+
+    ul.append(li);
   }
-  window.myFunction = CreateToDo
+
+  function CreateLocalUl(arrayObj, name) {
+    for (const index of arrayObj) {
+      const ul = document.querySelector(".ul_todo");
+      const li = document.createElement("li");
+      const p = document.createElement("p");
+      const buttons = document.createElement("div");
+      const buttonDone = document.createElement("button");
+      const buttonDelet = document.createElement("button");
+
+      li.className = "li_todo";
+      p.className = "text_li";
+      buttons.className = "buttons_li";
+      buttonDone.className = "buttonDone_li";
+      buttonDelet.className = "buttonDelet_li";
+
+      p.textContent = index.name;
+      buttonDelet.textContent = "Удалить";
+
+      buttons.append(buttonDone);
+      buttons.append(buttonDelet);
+      li.append(p);
+      li.append(buttons);
+
+      if (index.done == true) {
+        buttonDone.textContent = "Отмена";
+        li.style.backgroundColor = "#67E667";
+      } else {
+        buttonDone.textContent = "Отметить";
+        li.style.backgroundColor = "#6C8CD5";
+      }
+
+      buttonDone.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (buttonDone.textContent == "Отметить") {
+          buttonDone.textContent = "Отмена";
+          li.style.backgroundColor = "#67E667";
+        } else if (buttonDone.textContent == "Отмена") {
+          buttonDone.textContent = "Отметить";
+          li.style.backgroundColor = "#6C8CD5";
+        }
+        RewriteLocalAarray(name);
+      });
+
+      buttonDelet.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Вы точно хотите удалить дело?")) {
+          li.remove(EventTarget);
+          RewriteLocalAarray(name);
+        }
+      });
+
+      ul.append(li);
+    }
+  }
+
+  function RewriteLocalAarray(name) {
+    const liArray = document.querySelectorAll(".li_todo");
+    const p = document.querySelectorAll(".text_li");
+    const buttonDone = document.querySelectorAll(".buttonDone_li");
+
+    arrayObj = [];
+    for (let index = 0; index < liArray.length; index++) {
+      let status = false;
+      if (buttonDone[index].innerText == "Отмена") {
+        status = true;
+      }
+      arrayObj.push({ name: p[index].textContent, done: status });
+    }
+    localStorage.setItem(name, JSON.stringify(arrayObj));
+  }
+
+  function ToDo(heading_text, name) {
+    const conteiner = document.querySelector(".conteiner");
+    const form = CreateForm().form;
+    const input = CreateForm().input;
+    const buttonAdd = CreateForm().buttonAdd;
+
+    conteiner.append(CreateHeading(heading_text));
+    conteiner.append(form);
+    form.append(input);
+    form.append(buttonAdd);
+    conteiner.append(CreateUl());
+
+    arrayObj = JSON.parse(localStorage.getItem(name)) || [
+      { name: "Покормить Лешу", done: true },
+      { name: "Найти Бабиджона", done: false },
+      { name: "Встать через не можу", done: true },
+    ];
+    CreateLocalUl(arrayObj, name);
+
+    setInterval(() => {
+      if (input.value != "") {
+        buttonAdd.removeAttribute("disabled");
+      } else {
+        buttonAdd.setAttribute("disabled", "disabled");
+      }
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      CreateLi(name);
+      input.value = "";
+    });
+  }
 })();
